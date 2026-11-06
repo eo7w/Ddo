@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🕵️ Spy Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- الصفحة الرئيسية -->
+<div id="mainPage" class="page">
+  <div class="scan-line"></div>
+  
+  <header>
+    <h1>🕵️ <span class="glitch">SPY TRACKER</span></h1>
+    <p class="subtitle">نظام تجسس متقدم • يكتشف جهازك وشبكتك</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- بطاقة المعالج -->
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>المعالج / النظام</h3>
+      <div class="info" id="cpuInfo">جاري الفحص...</div>
+    </div>
+
+    <!-- بطاقة الجهاز -->
+    <div class="card">
+      <div class="icon">💻</div>
+      <h3>معلومات الجهاز</h3>
+      <div class="info" id="deviceInfo">جاري الفحص...</div>
+    </div>
+
+    <!-- بطاقة الشاشة -->
+    <div class="card">
+      <div class="icon">🖥️</div>
+      <h3>الشاشة</h3>
+      <div class="info" id="screenInfo">جاري الفحص...</div>
+    </div>
+
+    <!-- بطاقة الكاميرا -->
+    <div class="card">
+      <div class="icon">📷</div>
+      <h3>كاميرا</h3>
+      <div class="info" id="camStatus">اضغط للتفعيل</div>
+      <video id="video" autoplay playsinline></video>
+      <canvas id="snapCanvas" style="display:none"></canvas>
+      <img id="snapShot" style="display:none">
+      <div class="btns">
+        <button onclick="startCam()">📷 تشغيل</button>
+        <button onclick="snap()">📸 التقاط</button>
+        <button onclick="stopCam()">⏹ إيقاف</button>
+      </div>
+    </div>
+
+    <!-- بطاقة المايك -->
+    <div class="card">
+      <div class="icon">🎤</div>
+      <h3>مايكروفون</h3>
+      <div class="info" id="micStatus">اضغط للتسجيل</div>
+      <div class="btns">
+        <button onclick="startMic()">🎤 بدء التسجيل</button>
+        <button onclick="stopMic()">⏹ إيقاف</button>
+      </div>
+      <audio id="audioPlayback" controls style="display:none"></audio>
+      <canvas id="waveCanvas" width="280" height="60"></canvas>
+    </div>
+
+    <!-- بطاقة GPS -->
+    <div class="card">
+      <div class="icon">📍</div>
+      <h3>الموقع الجغرافي</h3>
+      <div class="info" id="gpsInfo">اضغط للتحديد</div>
+      <button onclick="getLocation()">📍 تحديد موقعي</button>
+      <iframe id="mapFrame" style="display:none"></iframe>
+    </div>
+
+    <!-- بطاقة الشبكة / IP -->
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>معلومات الشبكة</h3>
+      <div class="info" id="ipInfo">جاري الفحص...</div>
+    </div>
+
+    <!-- بطاقة البطارية -->
+    <div class="card">
+      <div class="icon">🔋</div>
+      <h3>البطارية</h3>
+      <div class="info" id="batteryInfo">جاري الفحص...</div>
+    </div>
+
+    <!-- بطاقة الحالة -->
+    <div class="card full">
+      <div class="icon">📡</div>
+      <h3>حالة الاتصال</h3>
+      <div class="info" id="netInfo">جاري الفحص...</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <button class="adminBtn" onclick="showAdmin()">🔐 لوحة التحكم</button>
+  </footer>
+</div>
+
+<!-- شاشة رمز الدخول -->
+<div id="loginPage" class="page overlay" style="display:none">
+  <div class="loginBox">
+    <h2>🔐 دخول لوحة التحكم</h2>
+    <input type="password" id="passInput" placeholder="أدخل الرمز" maxlength="10">
+    <button onclick="checkPass()">دخول</button>
+    <p id="loginMsg"></p>
+    <button class="backBtn" onclick="hideAdmin()">رجوع</button>
+  </div>
+</div>
+
+<!-- لوحة التحكم -->
+<div id="adminPage" class="page overlay" style="display:none">
+  <div class="adminBox">
+    <h2>🛠️ لوحة التحكم</h2>
+    <div id="adminContent">جاري جمع البيانات...</div>
+    <button class="backBtn" onclick="hideAdmin()">خروج</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
